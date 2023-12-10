@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.6'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+compileJava {
+	options.encoding = 'UTF-8' // Set the Java source file encoding
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8' // Set the Java class file encoding
+}
+
+tasks.withType(Test).configureEach {
+	systemProperty 'file.encoding', 'UTF-8' // Set the system property for test execution
+}
